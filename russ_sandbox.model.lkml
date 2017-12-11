@@ -53,7 +53,21 @@ explore: order_items {
     sql_on: ${distribution_centers.id} = ${inventory_items.product_distribution_center_id} ;;
     relationship: many_to_one
   }
+
+  join: ranked_stack {
+    type: left_outer
+    sql_on:
+
+       CASE
+         WHEN {% parameter products.stack_by %} = 'Brand' THEN ${products.brand}
+         WHEN {% parameter products.stack_by %} = 'Category' THEN ${products.category}
+         WHEN {% parameter products.stack_by %} = 'Department' THEN ${products.department}
+         ELSE 'N/A'
+       END = ${ranked_stack.products_stack_dim}  ;;
+    relationship: many_to_one
+  }
 }
+
 
 
 #########  Event Data Explores #########

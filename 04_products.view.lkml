@@ -7,6 +7,60 @@ view: products {
     sql: ${TABLE}.id ;;
   }
 
+  filter: stack_by {
+    type: string
+    suggestions: ["Brand","Category","Department"]
+  }
+
+  dimension: stack_dim {
+    type: string
+    sql:
+      CASE
+        WHEN {% parameter stack_by %} = 'Brand' THEN ${brand}
+        WHEN {% parameter stack_by %} = 'Category' THEN ${category}
+        WHEN {% parameter stack_by %} = 'Department' THEN ${department}
+        ELSE 'N/A'
+      END
+    ;;
+#     link: {
+#       url: "/dashboards/1835?stack%20by={{ _filters['products.stack_by'] | url_encode }}
+#       &{{ _filters['products.stack_by'] }}={{ value | url_encode }}
+#       &Department={{ _filters['products.department'] }}
+#       &Brand={{ _filters['products.brand'] }}
+#       &Category={{ _filters['products.category'] }}
+#       "
+#       label: "See Stacked by {{ _filters['products.stack_by'] }}, for just {{value}}"
+#     }
+      link: {
+        url: "/dashboards/1835?{{ _filters['products.stack_by'] }}={{ value | url_encode }}&stack%20by=Brand
+        &Department={{ _filters['products.department'] }}
+        &Brand={{ _filters['products.brand'] }}
+        &Category={{ _filters['products.category'] }}
+        "
+        label: "See Stacked by Brand, for just {{value}}"
+      }
+      link: {
+        url: "/dashboards/1835?{{ _filters['products.stack_by'] }}={{ value | url_encode }}&stack%20by=Category
+        &Department={{ _filters['products.department'] }}
+        &Brand={{ _filters['products.brand'] }}
+        &Category={{ _filters['products.category'] }}
+        "
+        label: "See Stacked by Category, for just {{value}}"
+      }
+      link: {
+        url: "/dashboards/1835?Category={{ _filters['products.category'] }}&stack%20by=Department
+        &{{ _filters['products.stack_by'] }}={{ value |  url_encode }}
+        &Department={{ _filters['products.department'] }}
+        &Brand={{ _filters['products.brand'] }}
+
+        "
+        label: "See Stacked by Department, for just {{value}}"
+      }
+    }
+
+
+
+
   dimension: category {
     sql: TRIM(${TABLE}.category) ;;
     drill_fields: [item_name]
