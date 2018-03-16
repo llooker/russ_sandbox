@@ -26,6 +26,19 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+#### Onemarket Testing w Albert ####
+measure: min_sale_price {
+  type: min
+  sql: ${sale_price}  ;;
+}
+
+measure: max_sale_price {
+  type: max
+  sql: ${sale_price}  ;;
+}
+
+##### END Onemarket Testing w Albert ####
+
   measure: order_count {
     view_label: "Orders"
     type: count_distinct
@@ -395,6 +408,10 @@ view: order_items {
     hidden: yes
     sql: ${cohort_values_0} + ${cohort_values_1} ;;
   }
+
+
+
+
 
 ########## Sets ##########
 
