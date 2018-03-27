@@ -14,9 +14,9 @@ view: tree_chart {
     html:
       {{ rendered_value }}
       {% if value > 0 %}
-       <font size="3" color="green"> ▲ </font>
+      <span style="color: green"> ▲ </span>
       {% elsif value < 0 %}
-      <font size="3" color="red"> ▼ </font>
+      <span style="color: red"> ▲ </span>
       {% endif %}
     ;;
   }
