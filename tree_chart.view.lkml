@@ -9,6 +9,7 @@ view: tree_chart {
 
   measure: change {
     type: number
+    value_format_name: percent_2
     sql:
     max(${TABLE}."CHANGE") ;;
     html:
