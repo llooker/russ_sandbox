@@ -19,7 +19,6 @@ view: tree_chart {
       <font size="3" color="red"> ▼ </font>
       {% endif %}
     ;;
-
   }
 
   dimension: measure {
