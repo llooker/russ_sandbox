@@ -17,7 +17,7 @@ view: tree_chart {
       {% if value > 0 %}
       <span style="color: green"> ▲ </span>
       {% elsif value < 0 %}
-      <span style="color: red"> ▲ </span>
+      <span style="color: red"> ▼ </span>
       {% endif %}
     ;;
   }
