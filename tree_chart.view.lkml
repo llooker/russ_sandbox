@@ -12,7 +12,7 @@ view: tree_chart {
     sql:
     max(${TABLE}."CHANGE") ;;
     html:
-      {{ value }}
+      {{ rendered_value }}
       {% if value > 0 %}
        <font size="3" color="green"> ▲ </font>
       {% elsif value < 0 %}
