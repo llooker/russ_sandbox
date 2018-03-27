@@ -25,9 +25,7 @@ view: tree_chart {
   dimension: measure {
     type: string
     sql: ${TABLE}."MEASURE" ;;
-    html:
-     {{rendered_value}}<span style="color: rgba(0,0,0,0);">▲</span>
-    ;;
+
   }
 
   dimension: parent {
@@ -38,6 +36,9 @@ view: tree_chart {
   measure: value {
     type: string
     sql: max(${TABLE}."VALUE" );;
+    html:
+    {{rendered_value}} <span style="color: rgba(0,0,0,0);">▲</span>
+    ;;
   }
 
 }
