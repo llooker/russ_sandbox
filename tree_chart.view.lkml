@@ -9,7 +9,17 @@ view: tree_chart {
 
   measure: change {
     type: number
-    sql: max(${TABLE}."CHANGE") ;;
+    sql:
+    max(${TABLE}."CHANGE") ;;
+    html:
+      {{ value }}
+      {% if value > 0 %}
+       <font size="3" color="green"> ▲ </font>
+      {% elsif value < 0 %}
+      <font size="3" color="red"> ▼ </font>
+      {% endif %}
+    ;;
+
   }
 
   dimension: measure {
@@ -27,8 +37,4 @@ view: tree_chart {
     sql: max(${TABLE}."VALUE" );;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [id]
-  }
 }
