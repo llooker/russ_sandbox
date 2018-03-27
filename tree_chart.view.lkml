@@ -25,6 +25,9 @@ view: tree_chart {
   dimension: measure {
     type: string
     sql: ${TABLE}."MEASURE" ;;
+    html:
+     {{rendered_value}}<span style="color: rgba(0,0,0,0);">▲</span>
+    ;;
   }
 
   dimension: parent {
