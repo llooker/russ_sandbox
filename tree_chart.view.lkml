@@ -13,12 +13,14 @@ view: tree_chart {
     sql:
     max(${TABLE}."CHANGE") ;;
     html:
-      {{ rendered_value }}
+      <span style="color: rgba(0,0,0,0)">.</span><br>
+      <span style="color: rgba(0,0,0,0)">.</span><br>
       {% if value > 0 %}
-      <span style="color: green"> ▲ </span>
+      <span style="color: #50AE55; font-weight: bold">{{ rendered_value }} ▲</span>
       {% elsif value < 0 %}
-      <span style="color: red"> ▼ </span>
+      <span style="color: #D0021B; font-weight: bold">{{ rendered_value }} ▼</span>
       {% endif %}
+      <br><span style="color: rgba(0,0,0,0);">-------------------------</span>
     ;;
   }
 
@@ -37,7 +39,8 @@ view: tree_chart {
     type: string
     sql: max(${TABLE}."VALUE" );;
     html:
-    {{rendered_value}} <span style="color: rgba(0,0,0,0);">▲</span>
+    <br><span style="color: #E7E8E8">-------------------------</span><br>
+    <span style="text-align: right;">{{rendered_value}} <span style="color: rgba(0,0,0,0);">▲</span></span><br><span style="color: #E7E8E8">-------------------------</span>
     ;;
   }
 
