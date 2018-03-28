@@ -28,7 +28,7 @@ view: tree_chart {
     type: string
     sql: ${TABLE}."MEASURE" ;;
     html:
-     <span id="{{ id._value }}"> {{ rendered_value }}</span>
+     <span id="{{ id._value }}" style="width: 50px"> {{ rendered_value }}</span>
     ;;
 
   }
