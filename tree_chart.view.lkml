@@ -7,6 +7,15 @@ view: tree_chart {
     sql: ${TABLE}."ID" ;;
   }
 
+  dimension: subtitle {
+    type: string
+    sql: null ;;
+    html:
+      {{rendered_value}}
+    ;;
+  }
+
+
   measure: change {
     type: number
     value_format_name: percent_2
