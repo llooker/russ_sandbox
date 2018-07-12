@@ -4,7 +4,7 @@ label: "1) eCommerce with Event Data"
 
 
 include: "*.view" # include all the views
-include: "*.dashboard" # include all the dashboards
+# include: "*.dashboard" # include all the dashboards
 
 
 ############ Base Explores #############
