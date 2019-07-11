@@ -212,6 +212,12 @@ measure: max_sale_price {
     {% endif %} ;;
   }
 
+  dimension: created_week_html {
+    type: date_week
+    sql: ${TABLE}.created_at  ;;
+    html: {{ value | date: "%s" | plus: 518400 | date: "%Y-%m-%d" }} ;;
+  }
+
   dimension: shipping_time {
     type: number
     sql: datediff('day',${shipped_raw},${delivered_raw})*1.0 ;;
