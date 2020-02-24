@@ -26,13 +26,9 @@ dimension: cool {
 
 
 dimension: id {
-  type: string
+  type: number
   sql: ${TABLE}.`ID_` ;;
   hidden: yes
 }
 
-}
-view: test2_extended {
-
-extends: [test2]
 }
