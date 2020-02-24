@@ -19,6 +19,11 @@ dimension: bar {
 }
 
 
+dimension: cool {
+  type: string
+}
+
+
 dimension: id {
   type: string
   sql: ${TABLE}.`ID_` ;;
