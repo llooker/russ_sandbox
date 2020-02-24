@@ -53,6 +53,17 @@ view: order_items {
     sql: ${TABLE}.id ;;
   }
 
+  filter: cpt_code {
+    type: string
+    suggestable: no
+  }
+
+  dimension: cpt_code_value {
+    type: string
+    sql: case when {% condition cpt_code %} '' {% endcondition %} then 0 else 1 end ;;
+#     sql: {{ _filters['cpt_code' }};; # can't be used in sql.
+  }
+
   dimension: inventory_item_id {
     type: number
     hidden: yes
@@ -234,6 +245,19 @@ measure: max_sale_price {
         WHEN ${status} = 'Cancelled' THEN NULL
       END
        ;;
+    html: {% if value > 2 %}
+    <font color="darkgreen">{{ rendered_value }}</font>
+    {% elsif value > 3 %}
+    <font color="goldenrod">{{ rendered_value }}</font>
+    {% else %}
+    <font color="darkred">{{ rendered_value }}</font>
+    {% endif %} ;;
+  }
+
+  dimension: created_week_html {
+    type: date_week
+    sql: ${TABLE}.created_at  ;;
+    html: {{ value | date: "%s" | plus: 518400 | date: "%Y-%m-%d" }} ;;
   }
 
   dimension: shipping_time {
