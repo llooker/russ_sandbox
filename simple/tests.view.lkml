@@ -36,3 +36,8 @@ view: test2_extended {
 
 extends: [test2]
 }
+
+view: test2_extended {
+
+
+}
