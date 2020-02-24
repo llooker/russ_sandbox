@@ -2,6 +2,51 @@ view: order_items {
   sql_table_name: order_items ;;
   ########## IDs, Foreign Keys, Counts ###########
 
+
+  parameter: stack_by {
+    type: unquoted
+#     suggestions: ["Brand","Category","Department"]
+    allowed_value: {
+      label: "Category"
+      value: "Category"
+    }
+    allowed_value: {
+      label: "Brand"
+      value: "Brand"
+    }
+    allowed_value: {
+      label: "Department"
+      value: "Department"
+    }
+    allowed_value: {
+      label: "State"
+      value: "State"
+    }
+  }
+
+  dimension: new_dimension {
+    type: string
+    html:
+
+         {% if order_items.stack_by._parameter_value == 'Brand' %} {{ products.brand._value }}
+         {% elsif order_items.stack_by._parameter_value == 'Category' %}  {{ products.category._value }}
+         {% elsif order_items.stack_by._parameter_value == 'Department' %} {{ products.department._value }}
+         {% elsif order_items.stack_by._parameter_value == 'State' %} {{ users.state._value }}
+         {% else %} 'N/A'
+         {% endif %}
+
+    ;;
+    sql:
+         {% if order_items.stack_by._parameter_value == 'Brand' %} products.brand
+         {% elsif order_items.stack_by._parameter_value == 'Category' %}  products.category
+         {% elsif order_items.stack_by._parameter_value == 'Department' %} products.department
+         {% elsif order_items.stack_by._parameter_value == 'State' %} users.state
+         {% else %} 'N/A'
+         {% endif %}
+    ;;
+  }
+
+
   dimension: id {
     primary_key: yes
     type: number
@@ -73,7 +118,6 @@ measure: max_sale_price {
     type: number
     sql: ${TABLE}.order_id ;;
 
-
     action: {
       label: "Send this to slack channel"
       url: "https://hooks.zapier.com/hooks/catch/1662138/tvc3zj/"
@@ -118,10 +162,7 @@ measure: max_sale_price {
 
       }
 
-
     }
-
-
 
   }
 
@@ -147,6 +188,7 @@ measure: max_sale_price {
 
   dimension_group: created {
     #X# group_label:"Order Date"
+#     convert_tz: no
     type: time
     timeframes: [time, hour, date, week, month, year, hour_of_day, day_of_week, month_num, raw, week_of_year]
     sql: ${TABLE}.created_at ;;
@@ -154,7 +196,8 @@ measure: max_sale_price {
 
   dimension: reporting_period {
     group_label: "Order Date"
-    sql: CASE
+    sql:
+    CASE
         WHEN date_part('year',${created_raw}) = date_part('year',current_date)
         AND ${created_raw} < CURRENT_DATE
         THEN 'This Year to Date'
@@ -162,7 +205,6 @@ measure: max_sale_price {
         WHEN date_part('year',${created_raw}) + 1 = date_part('year',current_date)
         AND date_part('dayofyear',${created_raw}) <= date_part('dayofyear',current_date)
         THEN 'Last Year to Date'
-
       END
        ;;
   }

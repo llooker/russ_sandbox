@@ -6,6 +6,7 @@ view: ranked_stack {
               WHEN {% parameter products.stack_by %} = 'Brand' THEN products.brand
               WHEN {% parameter products.stack_by %} = 'Category' THEN products.category
               WHEN {% parameter products.stack_by %} = 'Department' THEN products.department
+              WHEN {% parameter products.stack_by %} = 'State' THEN users.state
               ELSE 'N/A'
             END
            AS "products.stack_dim"
@@ -14,6 +15,7 @@ view: ranked_stack {
       FROM order_items  AS order_items
       FULL OUTER JOIN inventory_items  AS inventory_items ON inventory_items.id = order_items.inventory_item_id
       LEFT JOIN products  AS products ON products.id = inventory_items.product_id
+      LEFT JOIN users  AS users ON order_items.user_id = users.id
       WHERE
         1=1
         AND {% condition order_items.created_date %} order_items.created_at {% endcondition %}
@@ -42,11 +44,10 @@ view: ranked_stack {
   dimension: stacked_rank {
     type: string
     sql:
-            CASE WHEN ${rnk} <= 10 then '0' || ${rnk} || ') '|| ${products_stack_dim}
-            ELSE ${rnk} || ')' || ${products_stack_dim}
-            end
-
-
+            CASE
+              WHEN ${rnk} <= 10 then '0' || ${rnk} || ') '|| ${products_stack_dim}
+              ELSE ${rnk} || ')' || ${products_stack_dim}
+            END
     ;;
   }
 

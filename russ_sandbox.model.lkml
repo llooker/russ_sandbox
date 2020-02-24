@@ -7,17 +7,96 @@ include: "*.view" # include all the views
 # include: "*.dashboard" # include all the dashboards
 
 
+
+######## intel comma bug 12/13/2018 ######
+
+explore: repro {}
+
+view: repro {
+  derived_table: {
+    sql:
+      SELECT 'arnold,palmer' as drink, 10 as price UNION ALL
+      SELECT 'iced,tea', 9 UNION ALL
+      SELECT 'coke,classic', 5 UNION ALL
+      SELECT 'milk', 2 UNION ALL
+      SELECT 'water', 0
+
+    ;;
+  }
+
+  dimension: drink {
+    type: string
+    sql: ${TABLE}.drink ;;
+    link: {
+      label: "repro"
+      url: "/dashboards/111?drink%20name={{ _filters['repro.drink'] | url_encode }}&drink%20name=\"{{ value | url_encode }}\""
+      icon_url: "https://looker.com/favicon.ico"
+    }
+  }
+
+  measure: price {
+    type: sum
+    sql: ${TABLE}.price ;;
+  }
+
+
+}
+
+
+
+#####
+
+
+
+
 ############ Base Explores #############
+
+# If necessary, uncomment the line below to include explore_source.
+# include: "russ_sandbox.model.lkml"
+
+view: ndt {
+  derived_table: {
+    explore_source: order_items {
+      column: new_dimension {}
+      column: total_sale_price {}
+      derived_column: rank {
+        sql: ROW_NUMBER() OVER (ORDER BY total_sale_price DESC) ;;
+      }
+      bind_filters: {
+        from_field: order_items.stack_by
+        to_field: order_items.stack_by
+      }
+    }
+  }
+  dimension: new_dimension {
+    html:
+
+    {% if order_items.stack_by._parameter_value == 'Brand' %} {{ products.brand._value }}
+    {% elsif order_items.stack_by._parameter_value == 'Category' %}  {{ products.category._value }}
+    {% elsif order_items.stack_by._parameter_value == 'Department' %} {{ products.department._value }}
+    {% elsif order_items.stack_by._parameter_value == 'State' %} {{ users.state._value }}
+    {% else %} 'N/A'
+    {% endif %}
+
+    ;;
+  }
+  dimension: total_sale_price {
+    value_format: "$#,##0.00"
+    type: number
+  }
+}
+
+
+
 
 explore: order_items {
   label: "(1) Orders, Items and Users"
   view_name: order_items
 
-  access_filter: {
-    field: products.brand
-    user_attribute: brand
-  }
-
+#   access_filter: {
+#     field: products.brand
+#     user_attribute: brand
+#   }
 
   join: order_facts {
     view_label: "Orders"
@@ -27,7 +106,7 @@ explore: order_items {
 
   join: inventory_items {
     #Left Join only brings in items that have been sold as order_item
-    type: full_outer
+    type: left_outer
     relationship: one_to_one
     sql_on: ${inventory_items.id} = ${order_items.inventory_item_id} ;;
   }
@@ -60,6 +139,12 @@ explore: order_items {
     relationship: many_to_one
   }
 
+  join: ndt {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${order_items.new_dimension}  = ${ndt.new_dimension};;
+  }
+
   join: ranked_stack {
     type: left_outer
     sql_on:
@@ -68,6 +153,7 @@ explore: order_items {
          WHEN {% parameter products.stack_by %} = 'Brand' THEN ${products.brand}
          WHEN {% parameter products.stack_by %} = 'Category' THEN ${products.category}
          WHEN {% parameter products.stack_by %} = 'Department' THEN ${products.department}
+         WHEN {% parameter products.stack_by %} = 'State' THEN ${users.state}
          ELSE 'N/A'
        END = ${ranked_stack.products_stack_dim}  ;;
     relationship: many_to_one
