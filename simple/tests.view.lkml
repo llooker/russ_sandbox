@@ -18,4 +18,10 @@ dimension: bar {
   
 }
 
+
+dimension: id {
+  type: string
+  sql: ${TABLE}.`ID_` ;;
+}
+
 }
