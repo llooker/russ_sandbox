@@ -1,7 +1,18 @@
+
 view: test1 {
-  dimension: foo {}
+
+
+dimension: foo {
+  sql: ${TABLE}.id ;;
+}
+
 }
 
 view: test2 {
-  dimension: bar {}
+
+
+dimension: bar {
+  
+}
+
 }
