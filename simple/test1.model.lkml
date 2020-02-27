@@ -12,6 +12,7 @@ join: test2 {
 
 join: test3 {
   relationship: many_to_one
+  sql_on: ${test1.foo} = ${test3.id} ;;
 }
 
 }
