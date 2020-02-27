@@ -3,7 +3,7 @@ view: test1 {
 
 
 dimension: foo {
-  sql: ${TABLE}.id ;;
+  sql: ${TABLE}.scoop ;;
   tags: [
     "Generated Code",
     "wut",
