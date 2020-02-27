@@ -35,3 +35,13 @@ dimension: id {
 }
 
 }
+
+view: test3 {
+
+
+dimension: id {
+  type: string
+  sql: ${TABLE}._id_ ;;
+}
+
+}
