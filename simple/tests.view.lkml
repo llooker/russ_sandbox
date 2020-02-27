@@ -28,10 +28,9 @@ dimension: bar {
 
 dimension: cool {
   type: string
-  hidden: yes
   tags: [
     "x",
-  ]
+    ]
 }
 
 
