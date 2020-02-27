@@ -3,13 +3,15 @@
 view: test1 {
 
 
+#Auto Generated Code
 dimension: foo {
-  sql: ${TABLE}.foo ;;
+  sql: NVL(${TABLE}.foo,0) ;;
   tags: [
     "Generated Code",
     "wut",
     "cool",
     "crazy_right?",
+    "Detected Generated Code",
     ]
   suggestions: [
     "hello",
