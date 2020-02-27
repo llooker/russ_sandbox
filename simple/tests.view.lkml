@@ -36,7 +36,7 @@ view: test3 {
 
 
 dimension: id {
-  type: id
+  type: number
   sql: ${TABLE}._id_ ;;
 }
 
