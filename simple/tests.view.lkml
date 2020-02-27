@@ -3,14 +3,16 @@
 view: test1 {
 
 
-#Auto Generated Code
+#Auto Generated Code... comments in this will file may disappear on automation run
 dimension: foo {
   sql: NVL(${TABLE}.foo,0) ;;
   tags: [
     "Generated Code",
     "Detected Generated Code",
     ]
-  suggestions: []
+  suggestions: [
+    "suggestion1",
+    ]
 }
 
 }
