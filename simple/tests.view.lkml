@@ -8,6 +8,7 @@ dimension: foo {
     "Generated Code",
     "wut",
     "cool",
+    "crazy_right?",
     ]
   suggestions: [
     "hello",
