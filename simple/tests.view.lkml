@@ -29,7 +29,16 @@ dimension: bar {
 dimension: id {
   type: number
   sql: NVL(${TABLE}.`ID_`,0) ;;
-  tags: []
+}
+
+}
+
+view: test3 {
+
+
+dimension: id {
+  type: string
+  sql: ${TABLE}._id_ ;;
 }
 
 }
