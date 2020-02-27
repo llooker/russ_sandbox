@@ -36,7 +36,9 @@ dimension: id {
   type: number
   sql: ${TABLE}.`ID_` ;;
   hidden: yes
-  tags: ["x"]
+  tags: [
+    "x",
+    ]
 }
 
 }
