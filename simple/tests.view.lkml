@@ -9,6 +9,9 @@ dimension: foo {
     "wut",
     "cool",
     ]
+  suggestions: [
+    "hello",
+    ]
 }
 
 }
