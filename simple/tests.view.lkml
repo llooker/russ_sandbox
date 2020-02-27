@@ -7,6 +7,7 @@ dimension: foo {
   tags: [
     "Generated Code",
     "cool1",
+    "wut",
     ]
 }
 
