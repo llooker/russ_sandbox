@@ -8,5 +8,10 @@ join: test2 {
     
 }
 
+    
+join: test3 {
+    
+}
+
 }
 
