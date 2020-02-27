@@ -3,7 +3,7 @@ view: test1 {
 
 
 dimension: foo {
-  sql: ${TABLE}.scoop ;;
+  sql: NVL(${TABLE}.scoop,0) ;;
   tags: [
     "Generated Code",
     "wut",
