@@ -29,16 +29,19 @@ dimension: bar {
 dimension: cool {
   type: string
   tags: [
-    "x",
+    
     ]
+  sql: NVL([
+    
+    ],0) ;;
 }
 
 
 dimension: id {
   type: number
-  sql: ${TABLE}.`ID_` ;;
+  sql: NVL(${TABLE}.`ID_`,0) ;;
   tags: [
-    "x",
+    
     ]
 }
 
