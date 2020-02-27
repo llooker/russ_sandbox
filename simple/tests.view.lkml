@@ -12,7 +12,7 @@ dimension: foo {
     ]
   suggestions: [
     "hello",
-    "sneak attack",
+    "washington_post",
     ]
 }
 
