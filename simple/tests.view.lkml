@@ -26,13 +26,11 @@ dimension: bar {
 }
 
 
-
-
 dimension: id {
   type: number
   sql: NVL(${TABLE}.`ID_`,0) ;;
   tags: [
-
+    
     ]
 }
 
