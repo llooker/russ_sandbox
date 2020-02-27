@@ -3,7 +3,7 @@
 view: test1 {
 
 
-#Auto Generated Code
+#Auto Generated Code... comments in this will file may disappear on automation run
 dimension: foo {
   sql: NVL(${TABLE}.foo,0) ;;
   tags: [
@@ -14,8 +14,7 @@ dimension: foo {
     "Detected Generated Code",
     ]
   suggestions: [
-    "hello",
-    "washington_post",
+    "suggestion1",
     ]
 }
 
