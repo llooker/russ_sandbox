@@ -8,15 +8,9 @@ dimension: foo {
   sql: NVL(${TABLE}.foo,0) ;;
   tags: [
     "Generated Code",
-    "wut",
-    "cool",
-    "crazy_right?",
     "Detected Generated Code",
     ]
-  suggestions: [
-    "hello",
-    "washington_post",
-    ]
+  suggestions: []
 }
 
 }
