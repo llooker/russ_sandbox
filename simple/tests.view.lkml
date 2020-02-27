@@ -6,6 +6,8 @@ dimension: foo {
   sql: ${TABLE}.id ;;
   tags: [
     "Generated Code",
+    "cool",
+    "cool1",
     ]
 }
 
