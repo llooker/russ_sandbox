@@ -93,6 +93,10 @@ measure: total_my_number {
 }
 
 }
+view: test1_extended {
+
+extends: [test1]
+}
 
 view: test2 {
 
