@@ -15,11 +15,10 @@ dimension: foo {
     ]
 }
 
+
 dimension: my_number {
   type: number
 }
-
-
 
 }
 
