@@ -21,6 +21,10 @@ dimension: my_number {
   type: number
 }
 
+dimension: bar {
+  type: number
+  sql: ${TABLE}.bar ;;
+}
 
 dimension: my_number_2 {
   type: number
