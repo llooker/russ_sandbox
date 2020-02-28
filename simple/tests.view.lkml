@@ -29,11 +29,13 @@ dimension: my_number_2 {
 
 measure: total_my_number {
   type: sum
+  sql: ${my_number} ;;
 }
 
 
 measure: total_my_number_2 {
   type: sum
+  sql: ${my_number_2} ;;
 }
 
 }
