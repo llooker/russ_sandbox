@@ -13,12 +13,17 @@ dimension: foo {
   suggestions: [
     "suggestion1",
     ]
+  type: string
 }
 
 
 dimension: my_number {
   type: number
 }
+
+  dimension: my_number_2 {
+    type: number
+  }
 
 }
 
