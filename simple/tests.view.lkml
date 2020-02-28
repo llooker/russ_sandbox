@@ -26,6 +26,16 @@ dimension: my_number_2 {
   type: number
 }
 
+
+measure: total_my_number {
+  type: sum
+}
+
+
+measure: total_my_number_2 {
+  type: sum
+}
+
 }
 
 view: test2 {
