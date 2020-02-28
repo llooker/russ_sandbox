@@ -28,27 +28,7 @@ dimension: my_number {
 }
 
 
-dimension: my_number_2 {
-  type: number
-}
 
-
-measure: total_bar {
-  type: sum
-  sql: ${bar} ;;
-}
-
-
-measure: total_my_number {
-  type: sum
-  sql: ${my_number} ;;
-}
-
-
-measure: total_my_number_2 {
-  type: sum
-  sql: ${my_number_2} ;;
-}
 
 }
 
