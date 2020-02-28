@@ -21,9 +21,10 @@ dimension: my_number {
   type: number
 }
 
-  dimension: my_number_2 {
-    type: number
-  }
+
+dimension: my_number_2 {
+  type: number
+}
 
 }
 
