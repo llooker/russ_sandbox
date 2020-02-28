@@ -98,6 +98,11 @@ view: test1_extended {
 extends: [test1]
 }
 
+view: test1_extended {
+
+
+}
+
 view: test2 {
 
 
