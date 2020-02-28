@@ -3,6 +3,12 @@
 view: test1 {
 
 
+dimension: bar {
+  type: number
+  sql: ${TABLE}.bar ;;
+}
+
+
 #Auto Generated Code... comments in this will file may disappear on automation run
 dimension: foo {
   sql: NVL(${TABLE}.foo,0) ;;
@@ -21,13 +27,15 @@ dimension: my_number {
   type: number
 }
 
-dimension: bar {
-  type: number
-  sql: ${TABLE}.bar ;;
-}
 
 dimension: my_number_2 {
   type: number
+}
+
+
+measure: total_bar {
+  type: sum
+  sql: ${bar} ;;
 }
 
 
