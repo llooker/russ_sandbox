@@ -17,6 +17,11 @@ dimension: id {
   type: string
   sql: ${TABLE}.`id` ;;
 }
+  
+
+dimension: worked {
+  type: string
+}
     
     
     
