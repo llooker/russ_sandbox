@@ -19,6 +19,11 @@ dimension: id {
 }
   
 
+dimension: poop {
+  type: string
+}
+  
+
 dimension: worked {
   type: string
 }
