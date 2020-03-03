@@ -6,9 +6,6 @@ access_grant: abc {
   allowed_values: ["a","b","c"]
   user_attribute: abc
 }
-
-
-
 datagroup: mydatagroup {
   sql_trigger: select current_date ;;
   label: "Daily"
@@ -21,9 +18,13 @@ datagroup: mydatagroup2 {
   description: "Should fire daily just afte midnight pacific"
 }
 
-
-
 explore: test1 {
+
+  join: test2 {
+    relationship: many_to_one
+    sql_on: ${test1.foo}=${test2.id} ;;
+    type: left_outer
+  }
 
   join: test2 {
       required_access_grants: [abc]
@@ -32,9 +33,13 @@ explore: test1 {
     type: left_outer
   }
 
-
   join: test3 {
       relationship: many_to_one
+    sql_on: ${test1.foo} = ${test3.id} ;;
+  }
+
+  join: test3 {
+    relationship: many_to_one
     sql_on: ${test1.foo} = ${test3.id} ;;
   }
 
