@@ -11,7 +11,7 @@ dimension: bar {
 
 filter: comparison_period {
   type: date
-  sql: 
+  sql:
             ${created_raw}>= {% date_start comparison_period  %}
             AND ${created_raw} <= {% date_end reporting_period %}
          ;;
@@ -62,8 +62,8 @@ filter: reporting_period {
 
 measure: comparison_period_measure {
   type: count_distinct
-  sql: 
-          CASE 
+  sql:
+          CASE
            WHEN {% condition comparison_period %} ${created_raw} {% endcondition %} THEN ${foo}
            ELSE NULL
           END
@@ -73,7 +73,7 @@ measure: comparison_period_measure {
 
 measure: reporting_period_measure {
   type: count_distinct
-  sql: CASE 
+  sql: CASE
                      WHEN {% condition reporting_period %} ${created_raw} {% endcondition %} THEN ${foo}
                      ELSE NULL
                     END

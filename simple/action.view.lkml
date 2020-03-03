@@ -4,10 +4,7 @@ view: foo {
 
   dimension: bar {
     sql: wow ;;
-
-
-
-
+    required_access_grants: [foo]
   }
 
 
