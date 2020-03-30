@@ -106,7 +106,7 @@ form_param: {
   }
   
   dimension: hello { 
-    type: string 
+    type: number 
   }
   
   dimension: history { 
@@ -183,18 +183,9 @@ form_param: {
   dimension_group: created { 
     type: time
     sql: ${TABLE}.created_at ;;
-    timeframes: [raw
-  ,year
-  ,quarter
-  ,month
-  ,week
-  ,date
-  ,day_of_week
-  ,hour
-  ,hour_of_day
-  ,minute
-  ,time
-  ,time_of_day] 
+    timeframes: [
+      raw, year, quarter, month, week, date, day_of_week, hour, hour_of_day, minute, time, time_of_day,
+    ] 
   } 
   
   measure: average_age { 
