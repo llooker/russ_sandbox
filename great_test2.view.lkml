@@ -1,9 +1,7 @@
 
 
 
-
 view: great_test2 {
-
    
    
    
