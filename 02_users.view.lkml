@@ -1,9 +1,7 @@
 
 
 
-
 view: users {
-
   sql_table_name: users ;; 
    
    
@@ -80,10 +78,8 @@ form_param: {
   type: textarea
   required: yes
   default: "Dear {{ users.first_name._value }},
-
                  Thanks for your loyalty to the Look.  We'd like to offer you a 10% discount
                  on your next purchase!  Just use the code LOYAL when checking out!
-
                  Your friends at the Look"
   }
   }
