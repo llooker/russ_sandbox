@@ -1,9 +1,7 @@
 
 
 
-
 view: test1 {
-
    
    
    
@@ -50,9 +48,7 @@ view: test1 {
 }
 
 
-
 view: test2 {
-
    
    
    
@@ -71,9 +67,7 @@ view: test2 {
 }
 
 
-
 view: test3 {
-
    
    
    
