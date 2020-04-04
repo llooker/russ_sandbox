@@ -1,9 +1,7 @@
 
 
 
-
 view: order_items_3 {
-
   sql_table_name: PUBLIC.ORDER_ITEMS ;; 
    
    
