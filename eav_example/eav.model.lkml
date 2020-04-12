@@ -9,13 +9,13 @@ view: usr {
 
 view: usr_profile {
   dimension: user_id {}
-  dimension: cust_id {}
+  dimension: org_id {}
 }
 
-view: custom_profile_fields_raw {
+view: eav_source {
   sql_table_name:
   (
-      SELECT 1 as user_id, 8 as cust_id, 'c_donation_amount' as field_name, '40' as value, 'int' as datatype UNION ALL
+      SELECT 1 as user_id, 8 as org_id, 'c_donation_amount' as field_name, '40' as value, 'int' as datatype UNION ALL
       SELECT 1, 8, 'c_highest_achievement', 'gold badge', 'varchar' UNION ALL
       SELECT 2, 101, 'c_highest_achievement', 'silver badge', 'varchar' UNION ALL
       SELECT 2, 101, 'c_monthly_contribution', '300', 'int' UNION ALL
@@ -25,7 +25,7 @@ view: custom_profile_fields_raw {
 
   ;;
   dimension: user_id { type: number }
-  dimension: cust_id { type: number }
+  dimension: org_id { type: number }
   dimension: field_name { type: string }
   dimension: value { type: string }
   dimension: datatype { type: string }
