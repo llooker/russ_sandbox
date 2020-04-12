@@ -22,7 +22,6 @@ view: eav_source {
       SELECT 3, 101, 'c_highest_achievement', 'bronze badge', 'varchar' UNION ALL
       SELECT 3, 101, 'c_monthly_contribution', '350', 'int'
   )
-
   ;;
   dimension: user_id { type: number }
   dimension: org_id { type: number }
