@@ -34,6 +34,6 @@ explore: usr {
   join: usr_profile {
     type: left_outer
     relationship: one_to_one
-    sql: ${usr.id} =  ${usr_profile.user_id};;
+    sql_on: ${usr.id} =  ${usr_profile.user_id};;
   }
 }
