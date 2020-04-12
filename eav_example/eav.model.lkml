@@ -56,6 +56,8 @@ view: usr {
   dimension: id {
    }
 
+  dimension: cool {}
+
   dimension_group: created {
     timeframes: [
       raw, year, quarter, month, week, date, day_of_week, hour, hour_of_day, minute, time, time_of_day,
@@ -161,7 +163,9 @@ view: usr_profile {
     sql: ${c_monthly_contribution} ;;
     required_access_grants: [
       org_102,
-    ] }
+    ]
+
+    }
 
 }
 
