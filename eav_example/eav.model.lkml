@@ -65,6 +65,14 @@ view: usr {
     type: time
     sql: ${TABLE}.`` ;; }
 
+  measure: employee_count {
+    type: count
+    filters:  {
+      field: email
+      value: "%@gmail.com"
+    }
+  }
+
 
 }
 
