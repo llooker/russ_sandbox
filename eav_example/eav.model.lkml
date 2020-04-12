@@ -17,7 +17,10 @@ connection: "snowlooker"
 explore: usr {
 
 
-
+access_filter: {
+  field: usr_profile.org_id
+  user_attribute: org_id
+}
 
   join: usr_profile {
     type: left_outer
@@ -144,15 +147,15 @@ view: usr_profile {
 view: eav_source {
 
   sql_table_name: (
-                        SELECT 1 as user_id, 8 as org_id, 'c_donation_amount' as field_name, '40' as value, 'int' as datatype UNION ALL
-                        SELECT 1, 8, 'c_highest_achievement', 'gold badge', 'varchar' UNION ALL
-                        SELECT 2, 101, 'c_highest_achievement', 'silver badge', 'varchar' UNION ALL
-                        SELECT 2, 101, 'c_monthly_contribution', '300', 'int' UNION ALL
-                        SELECT 3, 101, 'c_highest_achievement', 'bronze badge', 'varchar' UNION ALL
-                        SELECT 3, 101, 'c_monthly_contribution', '350', 'int'
-                        SELECT 4, 101, 'c_monthly_contribution', '350', 'int'
-                        SELECT 4, 101, 'age', '32', 'int'
-                        SELECT 5, 102, 'c_monthly_contribution', '100', 'int'
+      SELECT 1 as user_id, 8 as org_id, 'c_donation_amount' as field_name, '40' as value, 'int' as datatype UNION ALL
+      SELECT 1, 8, 'c_highest_achievement', 'gold badge', 'varchar' UNION ALL
+      SELECT 2, 101, 'c_highest_achievement', 'silver badge', 'varchar' UNION ALL
+      SELECT 2, 101, 'c_monthly_contribution', '300', 'int' UNION ALL
+      SELECT 3, 101, 'c_highest_achievement', 'bronze badge', 'varchar' UNION ALL
+      SELECT 3, 101, 'c_monthly_contribution', '350', 'int' UNION ALL
+      SELECT 4, 101, 'c_monthly_contribution', '350', 'int' UNION ALL
+      SELECT 4, 101, 'age', '32', 'int' UNION ALL
+      SELECT 5, 102, 'c_monthly_contribution', '100', 'int'
   ) ;;
   dimension: datatype {
     type: string }
