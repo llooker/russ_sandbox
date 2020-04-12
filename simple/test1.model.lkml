@@ -8,7 +8,7 @@ access_grant: abc {
     "b",
     "c",
     ]
-  user_attribute: abc
+  user_attribute: org_id
   }
 
 datagroup: mydatagroup {
@@ -25,21 +25,20 @@ datagroup: mydatagroup2 {
 
 explore: test1 {
 
-  
 
-  
-  join: test2 { 
+
+
+  join: test2 {
     required_access_grants: [
       abc,
     ]
     relationship: many_to_one
     sql_on: ${test1.foo}=${test2.id} ;;
-    type: left_outer 
+    type: left_outer
   }
-  
-  join: test3 { 
+
+  join: test3 {
     relationship: many_to_one
-    sql_on: ${test1.foo} = ${test3.id} ;; 
+    sql_on: ${test1.foo} = ${test3.id} ;;
   }
 }
-
