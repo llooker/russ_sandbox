@@ -22,10 +22,9 @@ connection: "snowlooker"
 
 explore: usr {
 
-  access_filter:
-      {
-      field: usr_profile.org_id
-  user_attribute: org_id
+  access_filter: {
+    field: usr_profile.org_id
+    user_attribute: org_id
   }
 
 
