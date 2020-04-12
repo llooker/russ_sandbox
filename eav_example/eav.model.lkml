@@ -12,9 +12,17 @@ connection: "snowlooker"
     "101",
     ]
   }
+    access_grant: org_102 {
+  user_attribute: org_id
+  allowed_values: [
+    "102",
+    ]
+  }
 
 
 explore: usr {
+
+
 
 
 access_filter: {
@@ -49,18 +57,9 @@ view: usr {
    }
 
   dimension_group: created {
-    timeframes: [raw
-  ,year
-  ,quarter
-  ,month
-  ,week
-  ,date
-  ,day_of_week
-  ,hour
-  ,hour_of_day
-  ,minute
-  ,time
-  ,time_of_day]
+    timeframes: [
+      raw, year, quarter, month, week, date, day_of_week, hour, hour_of_day, minute, time, time_of_day,
+    ]
     type: time
     sql: ${TABLE}.`` ;; }
 
@@ -97,8 +96,24 @@ view: usr_profile {
     column: c_monthly_contribution {
       field: _eav_flattener.c_monthly_contribution
   }
+    column: c_monthly_contribution {
+      field: _eav_flattener.c_monthly_contribution
+  }
+    column: age {
+      field: _eav_flattener.age
+  }
+    column: c_monthly_contribution {
+      field: _eav_flattener.c_monthly_contribution
   }
   }
+  }
+  dimension: age {
+    type: number
+    sql: ${TABLE}.age ;;
+    required_access_grants: [
+      org_101,
+    ] }
+
   dimension: c_donation_amount {
     type: number
     sql: ${TABLE}.c_donation_amount ;;
@@ -117,7 +132,7 @@ view: usr_profile {
     type: number
     sql: ${TABLE}.c_monthly_contribution ;;
     required_access_grants: [
-      org_101,
+      org_102,
     ] }
 
   dimension: org_id {
@@ -126,6 +141,13 @@ view: usr_profile {
   dimension: user_id {
    }
 
+
+  measure: age_total {
+    type: sum
+    sql: ${age} ;;
+    required_access_grants: [
+      org_101,
+    ] }
 
   measure: c_donation_amount_total {
     type: sum
@@ -138,7 +160,7 @@ view: usr_profile {
     type: sum
     sql: ${c_monthly_contribution} ;;
     required_access_grants: [
-      org_101,
+      org_102,
     ] }
 
 }
@@ -172,6 +194,10 @@ view: eav_source {
   dimension: value {
     type: string }
 
+
+  measure: age {
+    type: max
+    sql: CASE WHEN ${field_name} = 'age' THEN ${value} ELSE NULL END ;; }
 
   measure: c_donation_amount {
     type: max
