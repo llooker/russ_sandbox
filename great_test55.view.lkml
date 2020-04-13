@@ -2,19 +2,13 @@
 
 
 view: great_test55 {
-   
-   
-   
-  
   dimension: count_of_total { 
-    type: string 
-  }
+    type: string }
   
   dimension: id { 
     type: string
-    sql: ${TABLE}.`id` ;; 
-  } 
-   
-   
+    sql: ${TABLE}.`id` ;; }
+  
+  
   
 }

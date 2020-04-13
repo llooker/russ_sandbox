@@ -2,14 +2,11 @@
 
 
 view: users {
-  sql_table_name: users ;; 
-   
-   
-  
+
+  sql_table_name: users ;;
   dimension: age { 
     type: number
-    sql: ${TABLE}.age ;; 
-  }
+    sql: ${TABLE}.age ;; }
   
   dimension: age_tier { 
     type: tier
@@ -17,8 +14,7 @@ view: users {
       0, 10, 20, 30, 40, 50, 60, 70,
     ]
     style: integer
-    sql: ${age} ;; 
-  }
+    sql: ${age} ;; }
   
   dimension: approx_location { 
     type: location
@@ -26,15 +22,13 @@ view: users {
       location,
     ]
     sql_latitude: round(${TABLE}.latitude,1) ;;
-    sql_longitude: round(${TABLE}.longitude,1) ;; 
-  }
+    sql_longitude: round(${TABLE}.longitude,1) ;; }
   
   dimension: city { 
     sql: ${TABLE}.city ;;
     drill_fields: [
       zip,
-    ] 
-  }
+    ] }
   
   dimension: country { 
     map_layer_name: countries
@@ -42,9 +36,8 @@ view: users {
       state, city,
     ]
     sql: CASE WHEN ${TABLE}.country = 'UK' THEN 'United Kingdom'
-           ELSE ${TABLE}.country
-           END ;; 
-  }
+  ELSE ${TABLE}.country
+  END ;; }
   
   dimension: email { 
     sql: ${TABLE}.email ;;
@@ -78,37 +71,31 @@ form_param: {
   type: textarea
   required: yes
   default: "Dear {{ users.first_name._value }},
-                 Thanks for your loyalty to the Look.  We'd like to offer you a 10% discount
-                 on your next purchase!  Just use the code LOYAL when checking out!
-                 Your friends at the Look"
+  Thanks for your loyalty to the Look.  We'd like to offer you a 10% discount
+  on your next purchase!  Just use the code LOYAL when checking out!
+  Your friends at the Look"
   }
   }
     required_fields: [
       name, first_name,
-    ] 
-  }
+    ] }
   
   dimension: first_name { 
     hidden: yes
-    sql: INITCAP(${TABLE}.first_name) ;; 
-  }
+    sql: INITCAP(${TABLE}.first_name) ;; }
   
   dimension: gender { 
-    sql: ${TABLE}.gender ;; 
-  }
+    sql: ${TABLE}.gender ;; }
   
   dimension: gender_short { 
-    sql: LOWER(LEFT(${gender},1)) ;; 
-  }
+    sql: LOWER(LEFT(${gender},1)) ;; }
   
   dimension: hello { 
-    type: number 
-  }
+    type: number }
   
   dimension: history { 
     sql: ${TABLE}.id ;;
-    html: <a href="/explore/thelook/order_items?fields=order_items.detail*&f[users.id]={{ value }}">Order History</a> ;; 
-  }
+    html: <a href="/explore/thelook/order_items?fields=order_items.detail*&f[users.id]={{ value }}">Order History</a> ;; }
   
   dimension: id { 
     primary_key: yes
@@ -116,46 +103,38 @@ form_param: {
     sql: ${TABLE}.id ;;
     tags: [
     "user_id",
-    ] 
-  }
+    ] }
   
   dimension: image_file { 
     hidden: yes
-    sql: ('https://docs.looker.com/assets/images/'||${gender_short}||'.jpg') ;; 
-  }
+    sql: ('https://docs.looker.com/assets/images/'||${gender_short}||'.jpg') ;; }
   
   dimension: last_name { 
     hidden: yes
-    sql: INITCAP(${TABLE}.last_name) ;; 
-  }
+    sql: INITCAP(${TABLE}.last_name) ;; }
   
   dimension: location { 
     type: location
     sql_latitude: ${TABLE}.latitude ;;
-    sql_longitude: ${TABLE}.longitude ;; 
-  }
+    sql_longitude: ${TABLE}.longitude ;; }
   
   dimension: name { 
-    sql: ${first_name} || ' ' || ${last_name} ;; 
-  }
+    sql: ${first_name} || ' ' || ${last_name} ;; }
   
   dimension: ssn { 
     hidden: yes
     type: number
-    sql: lpad(cast(round(random() * 10000, 0) as char(4)), 4, '0') ;; 
-  }
+    sql: lpad(cast(round(random() * 10000, 0) as char(4)), 4, '0') ;; }
   
   dimension: state { 
     sql: ${TABLE}.state ;;
     map_layer_name: us_states
     drill_fields: [
       zip, city,
-    ] 
-  }
+    ] }
   
   dimension: traffic_source { 
-    sql: ${TABLE}.traffic_source ;; 
-  }
+    sql: ${TABLE}.traffic_source ;; }
   
   dimension: uk_postcode { 
     label: "UK Postcode"
@@ -163,26 +142,22 @@ form_param: {
     map_layer_name: uk_postcode_areas
     drill_fields: [
       city, zip,
-    ] 
-  }
+    ] }
   
   dimension: user_image { 
     sql: ${image_file} ;;
-    html: <img src="{{ value }}" width="220" height="220"/> ;; 
-  }
+    html: <img src="{{ value }}" width="220" height="220"/> ;; }
   
   dimension: zip { 
     type: zipcode
-    sql: ${TABLE}.zip ;; 
-  } 
+    sql: ${TABLE}.zip ;; }
   
   dimension_group: created { 
     type: time
     sql: ${TABLE}.created_at ;;
     timeframes: [
       raw, year, quarter, month, week, date, day_of_week, hour, hour_of_day, minute, time, time_of_day,
-    ] 
-  } 
+    ] }
   
   measure: average_age { 
     type: average
@@ -190,15 +165,13 @@ form_param: {
     sql: ${age} ;;
     drill_fields: [
       detail*,
-    ] 
-  }
+    ] }
   
   measure: count { 
     type: count
     drill_fields: [
       detail*,
-    ] 
-  }
+    ] }
   
   measure: count_percent_of_total { 
     label: "Count (Percent of Total)"
@@ -206,10 +179,9 @@ form_param: {
     sql: ${count} ;;
     drill_fields: [
       detail*,
-    ] 
-  } 
+    ] }
   
-set: detail {
+    set: detail {
   fields: [
       id, name, email, age, created_date, orders.count, order_items.count,
     ]
