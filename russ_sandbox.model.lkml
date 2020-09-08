@@ -1,4 +1,5 @@
-connection: "thelook_events_redshift"
+# connection: "thelook_events_redshift"
+connection: "bfw_bq"
 persist_for: "1 hour"  # cache all query results for one hour
 label: "1) eCommerce with Event Data"
 

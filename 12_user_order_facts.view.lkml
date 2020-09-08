@@ -10,8 +10,8 @@ view: user_order_facts {
       FROM order_items
       GROUP BY user_id
        ;;
-    sortkeys: ["user_id"]
-    distribution: "user_id"
+#     sortkeys: ["user_id"]
+#     distribution: "user_id"
     sql_trigger_value: SELECT MAX(created_at) FROM order_items ;;
   }
 

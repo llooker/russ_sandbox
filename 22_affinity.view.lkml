@@ -1,8 +1,8 @@
 view: affinity {
   derived_table: {
     sql_trigger_value: SELECT DATE(CONVERT_TIMEZONE('UTC', 'America/Chicago', GETDATE())) ;;
-    distribution: "product_a_id"
-    sortkeys: ["product_a_id", "product_b_id"]
+#     distribution: "product_a_id"
+#     sortkeys: ["product_a_id", "product_b_id"]
     sql: SELECT
         product_a_id
         , product_b_id
@@ -130,8 +130,8 @@ view: affinity {
 view: user_order_product {
   derived_table: {
     sql_trigger_value: SELECT DATE(CONVERT_TIMEZONE('UTC', 'America/Chicago', GETDATE())) ;;
-    distribution: "prod_id"
-    sortkeys: ["prod_id", "user_id", "order_id"]
+#     distribution: "prod_id"
+#     sortkeys: ["prod_id", "user_id", "order_id"]
     sql: SELECT
         oi.user_id AS user_id
         , p.id AS prod_id
@@ -171,8 +171,8 @@ view: user_order_product {
 view: total_order_product {
   derived_table: {
     sql_trigger_value: SELECT DATE(CONVERT_TIMEZONE('UTC', 'America/Chicago', GETDATE())) ;;
-    distribution: "prod_id"
-    sortkeys: ["prod_id"]
+#     distribution: "prod_id"
+#     sortkeys: ["prod_id"]
     sql: SELECT
         p.id AS prod_id
         , COUNT(*) AS prod_freq

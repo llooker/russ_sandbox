@@ -1,4 +1,5 @@
-connection: "thelook_events_redshift"
+# connection: "thelook_events_redshift"
+connection: "bfw_bq"
 # #TESTY MAGOO
 #
 # include: "tree_chart.view.lkml"         # include all views in this project

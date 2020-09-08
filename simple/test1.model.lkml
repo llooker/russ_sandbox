@@ -1,6 +1,7 @@
 include: "/simple/*.view.lkml"
 include: "*.view.lkml"
-connection: "thelook_events_redshift"
+# connec tion: "thelook_events_redshift"
+connection: "bfw_bq"
 
     access_grant: abc { allowed_values: [
     "a",
@@ -16,13 +17,12 @@ connection: "thelook_events_redshift"
   label: "Daily"
   description: "Should fire daily just afte midnight pacific" }
 
- explore: test1 { 
-   
-  join: test2 { 
-    required_access_grants: [ abc,] 
+ explore: test1 {
+
+  join: test2 {
+    required_access_grants: [ abc,]
     relationship: many_to_one
     sql_on: ${test1.foo}=${test2.id} ;;
     type: left_outer }
   join: test3 {   relationship: many_to_one
     sql_on: ${test1.foo} = ${test3.id} ;; } }
-

@@ -1,8 +1,8 @@
 view: trailing_sales_snapshot {
   derived_table: {
     sql_trigger_value: select current_date ;;
-    sortkeys: ["product_id"]
-    distribution: "product_id"
+#     sortkeys: ["product_id"]
+#     distribution: "product_id"
     sql: with calendar as
       (select distinct date(created_at) as snapshot_date
       from inventory_items

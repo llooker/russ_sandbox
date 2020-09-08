@@ -1,8 +1,8 @@
 view: inventory_snapshot {
   derived_table: {
     sql_trigger_value: select current_date ;;
-    sortkeys: ["snapshot_date"]
-    distribution: "product_id"
+#     sortkeys: ["snapshot_date"]
+#     distribution: "product_id"
     sql: with calendar as
       (select distinct date(created_at) as snapshot_date
       from inventory_items

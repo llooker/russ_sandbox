@@ -1,7 +1,7 @@
 view: sessions {
   derived_table: {
-    sortkeys: ["session_id"]
-    distribution: "session_id"
+#     sortkeys: ["session_id"]
+#     distribution: "session_id"
     sql_trigger_value: select max(created_at) from events ;;
     sql: SELECT
         session_id

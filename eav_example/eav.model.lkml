@@ -1,4 +1,5 @@
-connection: "snowlooker"
+# conne ction: "snowlooker"
+connection: "bfw_bq"
 
 explore: usr {
     access_filter: {

@@ -11,8 +11,8 @@ view: order_facts {
         ON order_items.inventory_item_id = inventory_items.id
       GROUP BY order_items.order_id, order_items.user_id, order_items.created_at
        ;;
-    sortkeys: ["order_id"]
-    distribution: "order_id"
+#     sortkeys: ["order_id"]
+#     distribution: "order_id"
     sql_trigger_value: SELECT MAX(created_at) FROM order_items ;;
   }
 
