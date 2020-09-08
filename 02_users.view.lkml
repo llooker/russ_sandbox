@@ -101,7 +101,7 @@ form_param: { name: "Body"
   measure: average_age {
     type: average
     value_format_name: decimal_2
-    sql: ${age} ;;
+    sql: ${age} ${state};;
     drill_fields: [ detail*,]  }
   measure: count {   type: count
     drill_fields: [ detail*,]  }
