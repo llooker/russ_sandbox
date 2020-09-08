@@ -79,7 +79,6 @@ form_param: { name: "Body"
   dimension: ssn {
     hidden: yes
     type: number
-    html: {{location}} ;;
     sql: lpad(cast(round(random() * 10000, 0) as char(4)), 4, '0') ;; }
   dimension: state {
     sql: ${TABLE}.state ;;
@@ -88,7 +87,7 @@ form_param: { name: "Body"
   dimension: traffic_source {   sql: ${TABLE}.traffic_source ;; }
   dimension: uk_postcode {
     label: "UK Postcode"
-    sql: CASE WHEN ${TABLE}.country = 'UK' THEN TRANSLATE(LEFT(${zip},2),'0123456789','') END ;;
+    sql: CASE WHEN ${TABLE}.country = 'UK' THEN TRANSLATE(LEFT(${zip},2),'0123456789','') END  ${state};;
     map_layer_name: uk_postcode_areas
     drill_fields: [ city, zip,]  }
   dimension: user_image {   sql: ${image_file} ;;
