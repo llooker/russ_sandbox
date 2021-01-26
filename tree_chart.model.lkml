@@ -1,6 +1,14 @@
 # connection: "thelook_events_redshift"
 connection: "bfw_bq"
-# #TESTY MAGOO
+
+datagroup: foo {
+  sql_trigger: select current_date ;;
+  max_cache_age: "23 hours"
+}
+
+
+
+
 #
 # include: "tree_chart.view.lkml"         # include all views in this project
 # # include: "*.dashboard.lookml"  # include all dashboards in this project

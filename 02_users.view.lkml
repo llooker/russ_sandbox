@@ -1,5 +1,6 @@
 
-
+include: "01_order_items.view.lkml"
+include: "04_products.view.lkml"
 
 view: users {
   sql_table_name: users ;;

@@ -1,4 +1,3 @@
-# conne ction: "snowlooker"
 connection: "bfw_bq"
 
 explore: usr {

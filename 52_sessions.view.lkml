@@ -1,3 +1,4 @@
+explore: sessions {}
 view: sessions {
   derived_table: {
 #     sortkeys: ["session_id"]

@@ -1,11 +1,18 @@
+
+
 view: order_items {
-  sql_table_name: order_items ;;
+#   sql_table_name: order_items ;;
+
+derived_table: {
+  sql:  select * from order_items ;;
+}
   ########## IDs, Foreign Keys, Counts ###########
 
 
   parameter: stack_by {
     type: unquoted
 #     suggestions: ["Brand","Category","Department"]
+    tags: []
     allowed_value: {
       label: "Category"
       value: "Category"
@@ -80,6 +87,13 @@ view: order_items {
     type: count_distinct
     sql: ${id} ;;
     drill_fields: [detail*]
+    filters: [
+      user_id: ">10"
+    ]
+    filters: {
+      field: inventory_item_id
+      value: ">10"
+    }
   }
 
 #### Onemarket Testing w Albert ####
