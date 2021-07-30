@@ -11,7 +11,12 @@ include: "*.view" # include all the views
 
 ######## intel comma bug 12/13/2018 ######
 
-explore: repro {}
+explore: repro {
+  always_filter: {
+    filters: {
+      field: repo.id
+      value: "-NULL"
+      }
 
 view: repro {
   derived_table: {
