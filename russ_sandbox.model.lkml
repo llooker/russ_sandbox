@@ -14,7 +14,7 @@ include: "*.view" # include all the views
 explore: repro {
   always_filter: {
     filters: {
-      field: repo.id
+      field: repo.drink
       value: "-NULL"
       }
 
