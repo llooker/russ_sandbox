@@ -17,6 +17,8 @@ explore: repro {
       field: repo.drink
       value: "-NULL"
       }
+    }
+  }
 
 view: repro {
   derived_table: {
