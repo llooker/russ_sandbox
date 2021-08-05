@@ -12,12 +12,6 @@ include: "*.view" # include all the views
 ######## intel comma bug 12/13/2018 ######
 
 explore: repro {
-  always_filter: {
-    filters: {
-      field: repo.drink
-      value: "-NULL"
-      }
-    }
   }
 
 view: repro {
